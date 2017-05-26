@@ -5,34 +5,64 @@ import {
 	View,
 	Text
 } from 'react-native'
-import React from 'react'
-const ListItem = ({text, imageUrl}) => {
-	const image = imageUrl
 
-	return(
-		<TouchableOpacity>
-			<View  source= {styles.mediaObject}>
-				<Image source = {{uri:imageUrl}} style={styles.image} />
-				<Text style={styles.text}>{text}</Text>
-			</View>
-		</TouchableOpacity>
-	)
+import React from 'react'
+import {find} from '../utils/fetch';
+import {debounce} from 'lodash';
+
+/*
+	return name of show and tv episode data to pass to navigator 
+	look at how navigator receives props to pass them down
+	pass the prop to render a list view with the data
+ */
+
+export default class ListItem extends React.Component{
+	constructor(props) {
+	  super(props);
+	  this.state = {};
+	}
+
+	makeQuery = (id) => {
+		 find(id)
+		  .then(shows => {
+		  	console.log(shows)
+		  }).catch((error) => {
+		  	  throw error
+		  })		
+	}
+
+	render(){
+		return(
+			<TouchableOpacity onPress={() => this.makeQuery(this.props.id)}>
+				<View style= {styles.mediaObject}>
+					<Image source = {{uri:this.props.imageUrl}} style={styles.image} />
+					<Text style={styles.text}>{this.props.text}</Text>
+				</View>
+			</TouchableOpacity>
+		)
+	}
 }
 
-export default ListItem;
+
 
 const styles = StyleSheet.create({
 	mediaObject:{
 		flex:1,
-		alignItems:'center',
 		flexDirection:'row',
-		marginBottom:10
+		alignItems:'center',
+		padding:10,
+		borderBottomWidth:1,
+		borderBottomColor:'#8e8e8e',
 	},
-	text:{flex:1},
 	image:{
 		backgroundColor:'grey',
-		height:40,
-		width:40,
-		marginRight:16
+		height:100,
+		width:100,
+	},
+	text:{
+		color:'#110622',
+		fontSize:15,
+		flex:1,
+		marginLeft:10
 	}
 })

@@ -13,6 +13,7 @@ export default class Main extends Component{
 
 	  this.state = {tvShows: dataSource};
 	}
+	
 	makeQuery = debounce(query => {
 		searchFor(query)
 		  .then(shows => {
@@ -26,10 +27,13 @@ export default class Main extends Component{
 
 	renderRow = (show, id) => {
 		const imageUrl = "https://image.tmdb.org/t/p/w92/" + show.poster_path + '';
+		const { navigator } = this.props;
 		return (
 			<ListItem
 				text={show.name}
 				imageUrl = {imageUrl}
+			 	id={show.id}
+			 	navigator = {navigator}
 			 />
 		)
 	}
@@ -62,7 +66,7 @@ const styles = StyleSheet.create({
 		backgroundColor:'white'
 	},
 	header:{
-		backgroundColor:'dodgerblue',
+		backgroundColor:'#311162',
 		height:40,
 		alignItems:'center',
 		justifyContent:'center'
@@ -73,8 +77,7 @@ const styles = StyleSheet.create({
 		borderWidth:2,
 		fontWeight:'800',
 		margin:10,
-		width:200,
-		justifyContent:'center'
+		width:220,
 	},
 	inputView:{
 		alignItems:'center'
