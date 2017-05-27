@@ -5,6 +5,9 @@ import {searchFor} from '../utils/fetch';
 import ListItem from './ListItem';
 
 export default class Main extends Component{
+	  static navigationOptions = {
+	    title: 'Home',
+	  }
 	constructor(props) {
 	  super(props);
 	  const dataSource = new ListView.DataSource({
@@ -13,6 +16,7 @@ export default class Main extends Component{
 
 	  this.state = {tvShows: dataSource};
 	}
+
 	
 	makeQuery = debounce(query => {
 		searchFor(query)
@@ -27,13 +31,12 @@ export default class Main extends Component{
 
 	renderRow = (show, id) => {
 		const imageUrl = "https://image.tmdb.org/t/p/w92/" + show.poster_path + '';
-		const { navigator } = this.props;
 		return (
 			<ListItem
 				text={show.name}
 				imageUrl = {imageUrl}
 			 	id={show.id}
-			 	navigator = {navigator}
+			 	navigation={this.props.navigation}
 			 />
 		)
 	}

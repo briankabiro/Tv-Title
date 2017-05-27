@@ -11,13 +11,13 @@ import {
   Text,
   View
 } from 'react-native';
-import Main from './app/main'
+import Root from './app/root'
 
 export default class TvTitle extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Main />
+        <Root />
       </View>
     );
   }

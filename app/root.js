@@ -3,23 +3,21 @@ import {Navigator} from 'react-native'
 
 import Main from './main'
 import Episodes from './Episodes'
+import ListItem from './ListItem'
+import {StackNavigator} from 'react-navigation'
 
-export default class Root extends Component{
-	renderScene(route, navigator){
-		if( route.id === 'MAIN'){
-			return <Main navigator = {navigator} />
-		}else if(route.id === 'EPISODES'){
-			return <Episodes navigator={navigator} />
-		}
+const Root = StackNavigator({
+	Home:{
+		screen:Main
+	},
+	Episodes:{
+		screen:Episodes
+	},
+	ListItem:{
+		screen:ListItem
 	}
-	render(){
-		return(
-			<Navigator
-				style={{ flex: 1 }}
-				initialroute = {{ id: 'MAIN', title: 'Episode Title Search'}}
-				renderScene = {this.renderScene}
-				navigationBar = { NavigationBar }
-			 />
-		)
-	}
-}
+},{
+	headerMode:'none'
+})
+
+export default () => <Root />;

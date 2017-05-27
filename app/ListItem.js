@@ -9,7 +9,7 @@ import {
 import React from 'react'
 import {find} from '../utils/fetch';
 import {debounce} from 'lodash';
-
+import Episodes from './Episodes'
 /*
 	return name of show and tv episode data to pass to navigator 
 	look at how navigator receives props to pass them down
@@ -19,13 +19,15 @@ import {debounce} from 'lodash';
 export default class ListItem extends React.Component{
 	constructor(props) {
 	  super(props);
+	  this.makeQuery = this.makeQuery.bind(this)
 	  this.state = {};
 	}
 
 	makeQuery = (id) => {
 		 find(id)
-		  .then(shows => {
-		  	console.log(shows)
+		  .then((episodes) => {
+		  	console.log(episodes)
+		  	this.props.navigation.navigate("Episodes", {seasonData:episodes, showId:id})
 		  }).catch((error) => {
 		  	  throw error
 		  })		
