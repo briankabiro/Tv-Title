@@ -9,7 +9,7 @@ import {
 const placeholder = require("../assets/placeholder.png")
 
 // way to render whole picture in view, find pictures to style listview better, add shadow to top view, add back button, add error message if not found
-
+//dark - 2f4554, greys 414646, e4ddea, a5accb, 879b97, white bgs - f5f6f7
 export default class Episodes extends Component{
 	constructor(props) {
 	  super(props);
@@ -39,7 +39,9 @@ export default class Episodes extends Component{
 	render(){
 		return(
 			<View style={styles.container}>
-				<Text style={styles.heading}>Episode Titles</Text>
+				<View style={{elevation:2}}>
+					<Text style={styles.heading}>Episode Titles</Text>
+				</View>
 				<ListView 
 					dataSource = {this.state.episodes}
 					renderRow = {this.renderRow}
@@ -59,15 +61,15 @@ const styles = StyleSheet.create({
 		color:'purple',
 		padding:10
 	},
-	image:{
-		height:70,
-		width:70,
-		marginRight:15
-	},
 	eachEpisode:{
 		marginBottom:10,
 		flexDirection:'row',
 		alignItems:'center'
+	},
+	image:{
+		height:70,
+		width:70,
+		marginRight:15
 	},
 	title:{
 		color:'#36454F',

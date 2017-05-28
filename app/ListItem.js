@@ -10,11 +10,6 @@ import React from 'react'
 import {find} from '../utils/fetch';
 import {debounce} from 'lodash';
 import Episodes from './Episodes'
-/*
-	return name of show and tv episode data to pass to navigator 
-	look at how navigator receives props to pass them down
-	pass the prop to render a list view with the data
- */
 
 export default class ListItem extends React.Component{
 	constructor(props) {

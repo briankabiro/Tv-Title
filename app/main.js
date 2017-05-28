@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {View,Text,StyleSheet,TextInput,ListView,StatusBar} from 'react-native';
+import {View,Text,StyleSheet,TextInput,ListView} from 'react-native';
 import {debounce} from 'lodash';
 import {searchFor} from '../utils/fetch';
 import ListItem from './ListItem';
@@ -44,7 +44,6 @@ export default class Main extends Component{
 	render(){
 		return(
 			<View style={styles.container}>
-			<StatusBar barStyle="light-content" />
 				<View style={styles.header}>
 					<Text style={{color:'white',fontSize:25}}>Episode Title</Text>
 				</View>
@@ -69,7 +68,7 @@ const styles = StyleSheet.create({
 		backgroundColor:'white'
 	},
 	header:{
-		backgroundColor:'#311162',
+		backgroundColor:'#512DA8',
 		height:40,
 		alignItems:'center',
 		justifyContent:'center'
@@ -79,10 +78,11 @@ const styles = StyleSheet.create({
 		borderColor:'black',
 		borderWidth:2,
 		fontWeight:'800',
-		margin:10,
 		width:220,
+		paddingBottom:0
 	},
 	inputView:{
-		alignItems:'center'
+		alignItems:'center',
+		marginTop:10
 	}
 })
