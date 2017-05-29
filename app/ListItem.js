@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
 	image:{
 		backgroundColor:'grey',
 		height:100,
-		width:100,
+		width:80,
 	},
 	text:{
 		color:'#110622',

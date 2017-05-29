@@ -68,11 +68,11 @@ const styles = StyleSheet.create({
 	},
 	image:{
 		height:70,
-		width:70,
+		width:50,
 		marginRight:15
 	},
 	title:{
-		color:'#36454F',
+		color:'#2f4554',
 		fontSize:15
 	}
 })
