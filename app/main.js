@@ -45,12 +45,13 @@ export default class Main extends Component{
 		return(
 			<View style={styles.container}>
 				<View style={styles.header}>
-					<Text style={{color:'white',fontSize:25}}>Episode Title</Text>
+					<Text style={{color:'white',fontSize:20}}>Episode Title</Text>
 				</View>
 				<View style={styles.inputView}>
 					<TextInput style={styles.searchBox} 
 					onChangeText= { this.makeQuery}
 					underlineColorAndroid = 'rgba(0, 0, 0, 0)'
+					selectionColor = "black"
 					 />	
 				</View>
 				<ListView 
@@ -79,7 +80,8 @@ const styles = StyleSheet.create({
 		borderWidth:2,
 		fontWeight:'800',
 		width:220,
-		paddingBottom:0
+		paddingBottom:0,
+		padding:5
 	},
 	inputView:{
 		alignItems:'center',

@@ -54,10 +54,10 @@ const styles = StyleSheet.create({
 	image:{
 		backgroundColor:'grey',
 		height:100,
-		width:80,
+		width:75
 	},
 	text:{
-		color:'#110622',
+		color:'#2f4554',
 		fontSize:15,
 		flex:1,
 		marginLeft:10
