@@ -10,6 +10,7 @@ import React from 'react'
 import {find} from '../utils/fetch';
 import {debounce} from 'lodash';
 import Episodes from './Episodes'
+import Radio from './radio'
 
 export default class ListItem extends React.Component{
 	constructor(props) {
@@ -20,9 +21,9 @@ export default class ListItem extends React.Component{
 
 	makeQuery = (id) => {
 		 find(id)
-		  .then((episodes) => {
-		  	console.log(episodes)
-		  	this.props.navigation.navigate("Episodes", {seasonData:episodes, showId:id})
+		  .then((seasonArray) => {
+		  	console.log("seasons Array",seasonArray)
+		  	this.props.navigation.navigate("Radio", {seasonArray:seasonArray, showId:id})
 		  }).catch((error) => {
 		  	  throw error
 		  })		

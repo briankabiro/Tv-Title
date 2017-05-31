@@ -7,15 +7,13 @@ import {
 	StyleSheet
 } from 'react-native';
 const placeholder = require("../assets/placeholder.png")
-
-// way to render whole picture in view, find pictures to style listview better, add shadow to top view, add back button, add error message if not found
+// add back button, add error message if not found
 //dark - 2f4554, greys 414646,lighter grey -  e4ddea, a5accb, 879b97, white bgs - f5f6f7
 export default class Episodes extends Component{
 	constructor(props) {
 	  super(props);
 	  const episodesArray = this.props.navigation.state.params.seasonData.episodes
-      const dataSource = new ListView.DataSource({rowHasChanged:(r1,r2) => r1 !== r2
-      })
+      const dataSource = new ListView.DataSource({rowHasChanged:(r1,r2) => r1 !== r2})
 	  this.state = {
 	  	episodes:dataSource.cloneWithRows(episodesArray)
 	  };

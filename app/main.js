@@ -6,14 +6,21 @@ import ListItem from './ListItem';
 
 export default class Main extends Component{
 	  static navigationOptions = {
-	    title: 'Home',
+	    title: 'Episode Title',
+	    headerStyle:{
+	    	backgroundColor:'purple',
+	    	justifyContent:'center'
+	    },
+	    headerTitleStyle:{
+	    	color:'white',
+	    	alignSelf:'center'
+	    }
 	  }
 	constructor(props) {
 	  super(props);
 	  const dataSource = new ListView.DataSource({
 	  	rowHasChanged:(r1,r2) => r1 !== r2
 	  })
-
 	  this.state = {tvShows: dataSource};
 	}
 
@@ -44,9 +51,6 @@ export default class Main extends Component{
 	render(){
 		return(
 			<View style={styles.container}>
-				<View style={styles.header}>
-					<Text style={{color:'white',fontSize:20}}>Episode Title</Text>
-				</View>
 				<View style={styles.inputView}>
 					<TextInput style={styles.searchBox} 
 					onChangeText= { this.makeQuery}
@@ -80,11 +84,11 @@ const styles = StyleSheet.create({
 		borderWidth:2,
 		fontWeight:'800',
 		width:220,
-		paddingBottom:0,
-		padding:5
+		paddingBottom:2,
 	},
 	inputView:{
 		alignItems:'center',
-		marginTop:10
+		marginTop:10,
+		marginBottom:10
 	}
 })
