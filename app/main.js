@@ -79,12 +79,13 @@ const styles = StyleSheet.create({
 		justifyContent:'center'
 	},	
 	searchBox:{
-		height:40,
+		height:35,
 		borderColor:'black',
-		borderWidth:2,
+		borderWidth:1,
 		fontWeight:'800',
 		width:220,
 		paddingBottom:2,
+		borderRadius:2
 	},
 	inputView:{
 		alignItems:'center',

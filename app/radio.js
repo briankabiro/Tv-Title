@@ -3,8 +3,14 @@ import React, {Component} from 'react'
 import {View, Text, ListView, Image, StyleSheet} from 'react-native'
 import {getSeasons} from '../utils/fetch';
 const placeholder = require("../assets/placeholder.png")
-// radio js receives the data, on selected state load the data from that season with new link for episodes.js, add another function to fetch js that 
-//returns only the episodes and then pass that to navigator so that options is populated
+
+/*
+listview doesn't display all items blocked by bottom screen
+animation when loading the items to screen
+handle empty array
+*/
+
+
 export default class Radio extends Component{
 	constructor(props) {
 	  super(props);
@@ -27,13 +33,14 @@ export default class Radio extends Component{
 	}
 
 	renderRow(x){
+		//function that returns each episode data display in listview
 		const ImageUrl = (
 			x.still_path ? {uri:"https://image.tmdb.org/t/p/w185" + x.still_path + ''} : placeholder
 		)
 		return (
 			<View style={styles.eachEpisode}>
 				<Image style={styles.image} source = {ImageUrl} />
-				<View>
+				<View style={styles.episodeText}>
 					<Text style={styles.title}>{x.name}</Text>
 					<Text style={styles.seasonDetails}>S{x.season_number} - E{x.episode_number}</Text>
 				</View>
@@ -51,21 +58,22 @@ export default class Radio extends Component{
 		}
 
 		return(
-			<View>
-				<Text style={{fontWeight:'500', color:'#2f4554', textAlign:'center'}}>Pick a Season</Text>
+			<View style={styles.container}>
+				<Text style={{fontWeight:'300',marginTop:10,marginBottom:10, fontSize:15, color:'#2f4554', textAlign:'center'}}>Pick a Season</Text>
 				<SegmentedControls
 				 	options={ options }
 				 	selectedTint={'white'}
-				 	tint={'coral'}
+				 	tint={'purple'}
 				 	backTint={'white'}
 				 	onSelection={ setSelectedOption.bind(this)}
 				 	selectedOption={this.state.selectedOption}
+				 	separatorTint={'#ffffff'}
+				 	separatorWidth = {3}
+				 	containerStyle = {{marginBottom:10}}		
 				 />
-				 <Text>Season {this.state.selectedOption || 'none'}</Text>
 				<View style={{backgroundColor:'white'}}>	
 					<Text style={styles.episodeHeader}>Episodes</Text>
 					<ListView 
-						style={{flex:1}}
 						dataSource = {this.state.episodes}
 						renderRow = {this.renderRow}
 					/>
@@ -80,18 +88,10 @@ const styles = StyleSheet.create({
 		flex:1,
 		backgroundColor:'#f5f6f7'
 	},
-	heading:{
-		textAlign:'center',
-		color:'white',
-		padding:10,
-		fontWeight:'500',
-		fontSize:14
-	},
 	eachEpisode:{
 		marginBottom:10,
 		flexDirection:'row',
-		alignItems:'center',
-		backgroundColor:'white'
+		alignItems:'center'
 	},
 	image:{
 		height:100,
@@ -107,9 +107,13 @@ const styles = StyleSheet.create({
 		color:'#2f4554',
 		fontSize:10
 	},
+	episodeText:{
+		backgroundColor:'white'
+	},
 	episodeHeader:{
 		fontSize:15,
 		textAlign:'center',
-		color:'purple'
+		color:'purple',
+		marginBottom:10
 	}
 })
