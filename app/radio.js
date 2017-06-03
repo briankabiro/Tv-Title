@@ -1,6 +1,6 @@
 import {SegmentedControls } from 'react-native-radio-buttons'
 import React, {Component} from 'react'
-import {View, Text, ListView, Image, StyleSheet} from 'react-native'
+import {View, Text, ListView, Image, StyleSheet, Dimensions} from 'react-native'
 import {getSeasons} from '../utils/fetch';
 const placeholder = require("../assets/placeholder.png")
 
@@ -9,7 +9,7 @@ listview doesn't display all items blocked by bottom screen
 animation when loading the items to screen
 handle empty array
 */
-
+const {height, width} = Dimensions.get('window')
 
 export default class Radio extends Component{
 	constructor(props) {
@@ -67,13 +67,15 @@ export default class Radio extends Component{
 				 	backTint={'white'}
 				 	onSelection={ setSelectedOption.bind(this)}
 				 	selectedOption={this.state.selectedOption}
-				 	separatorTint={'#ffffff'}
-				 	separatorWidth = {3}
+				 	separatorTint={'#7E7E7C'}
+				 	separatorWidth = {1}
 				 	containerStyle = {{marginBottom:10}}		
+				 	
 				 />
-				<View style={{backgroundColor:'white'}}>	
+				<View style={{backgroundColor:'white',flex:1}}>	
 					<Text style={styles.episodeHeader}>Episodes</Text>
 					<ListView 
+						style={styles.listView}
 						dataSource = {this.state.episodes}
 						renderRow = {this.renderRow}
 					/>
@@ -115,5 +117,8 @@ const styles = StyleSheet.create({
 		textAlign:'center',
 		color:'purple',
 		marginBottom:10
+	},
+	listView:{
+		height:height
 	}
 })
