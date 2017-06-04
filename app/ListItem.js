@@ -5,7 +5,7 @@ import {
 	View,
 	Text
 } from 'react-native'
-
+import FadeIn from './fadeIn'
 import React from 'react'
 import {find} from '../utils/fetch';
 import {debounce} from 'lodash';
@@ -32,10 +32,12 @@ export default class ListItem extends React.Component{
 	render(){
 		return(
 			<TouchableOpacity onPress={() => this.makeQuery(this.props.id)}>
-				<View style= {styles.mediaObject}>
-					<Image source = {{uri:this.props.imageUrl}} style={styles.image} />
-					<Text style={styles.text}>{this.props.text}</Text>
-				</View>
+				<FadeIn delay = {1 * 25}>
+					<View style= {styles.mediaObject}>
+						<Image source = {this.props.imageUrl} style={styles.image} />
+						<Text style={styles.text}>{this.props.text}</Text>
+					</View>
+				</FadeIn>
 			</TouchableOpacity>
 		)
 	}

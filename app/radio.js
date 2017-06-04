@@ -2,6 +2,7 @@ import {SegmentedControls } from 'react-native-radio-buttons'
 import React, {Component} from 'react'
 import {View, Text, ListView, Image, StyleSheet, Dimensions} from 'react-native'
 import {getSeasons} from '../utils/fetch';
+import FadeIn from './fadeIn'
 const placeholder = require("../assets/placeholder.png")
 
 /*
@@ -34,17 +35,19 @@ export default class Radio extends Component{
 
 	renderRow(x){
 		//function that returns each episode data display in listview
-		const ImageUrl = (
+		var ImageUrl = (
 			x.still_path ? {uri:"https://image.tmdb.org/t/p/w185" + x.still_path + ''} : placeholder
 		)
 		return (
-			<View style={styles.eachEpisode}>
-				<Image style={styles.image} source = {ImageUrl} />
-				<View style={styles.episodeText}>
-					<Text style={styles.title}>{x.name}</Text>
-					<Text style={styles.seasonDetails}>S{x.season_number} - E{x.episode_number}</Text>
+			<FadeIn delay = {x.episode_number * 25}>
+				<View style={styles.eachEpisode}>
+					<Image style={styles.image} source = {ImageUrl} />
+					<View style={styles.episodeText}>
+						<Text style={styles.title}>{x.name}</Text>
+						<Text style={styles.seasonDetails}>S{x.season_number} - E{x.episode_number}</Text>
+					</View>
 				</View>
-			</View>
+			</FadeIn>
 		)	
 	}
 
@@ -117,8 +120,5 @@ const styles = StyleSheet.create({
 		textAlign:'center',
 		color:'purple',
 		marginBottom:10
-	},
-	listView:{
-		height:height
 	}
 })

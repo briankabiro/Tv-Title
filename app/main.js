@@ -3,6 +3,7 @@ import {View,Text,StyleSheet,TextInput,ListView} from 'react-native';
 import {debounce} from 'lodash';
 import {searchFor} from '../utils/fetch';
 import ListItem from './ListItem';
+const placeholder = require("../assets/placeholder.png")
 
 export default class Main extends Component{
 	  static navigationOptions = {
@@ -37,7 +38,10 @@ export default class Main extends Component{
 	}, 400);
 
 	renderRow = (show, id) => {
-		const imageUrl = "https://image.tmdb.org/t/p/w92/" + show.poster_path + '';
+		var shortenedUrl = "https://image.tmdb.org/t/p/w92/" + show.poster_path + '';
+		var imageUrl = (
+			show.poster_path ? {uri:shortenedUrl} : placeholder
+		)
 		return (
 			<ListItem
 				text={show.name}
