@@ -81,6 +81,7 @@ export default class Radio extends Component{
 						style={styles.listView}
 						dataSource = {this.state.episodes}
 						renderRow = {this.renderRow}
+						enableEmptySections={true}
 					/>
 				</View>
 			</View>

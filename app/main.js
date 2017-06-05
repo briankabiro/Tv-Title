@@ -4,6 +4,7 @@ import {debounce} from 'lodash';
 import {searchFor} from '../utils/fetch';
 import ListItem from './ListItem';
 const placeholder = require("../assets/placeholder.png")
+//slow react navigation transition on back button press
 
 export default class Main extends Component{
 	  static navigationOptions = {
@@ -60,11 +61,13 @@ export default class Main extends Component{
 					onChangeText= { this.makeQuery}
 					underlineColorAndroid = 'rgba(0, 0, 0, 0)'
 					selectionColor = "black"
+					placeholder="Type the name of a tv series"
 					 />	
 				</View>
 				<ListView 
 					dataSource = {this.state.tvShows}
 					renderRow = {this.renderRow}
+					enableEmptySections={true}
 				/>
 			</View>
 		)
@@ -86,7 +89,6 @@ const styles = StyleSheet.create({
 		height:35,
 		borderColor:'black',
 		borderWidth:1,
-		fontWeight:'800',
 		width:220,
 		paddingBottom:2,
 		borderRadius:2
