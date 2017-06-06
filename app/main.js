@@ -3,6 +3,7 @@ import {View,Text,StyleSheet,TextInput,ListView} from 'react-native';
 import {debounce} from 'lodash';
 import {searchFor} from '../utils/fetch';
 import ListItem from './ListItem';
+import Spinner from 'react-native-loading-spinner-overlay';
 const placeholder = require("../assets/placeholder.png")
 //slow react navigation transition on back button press
 
@@ -23,15 +24,19 @@ export default class Main extends Component{
 	  const dataSource = new ListView.DataSource({
 	  	rowHasChanged:(r1,r2) => r1 !== r2
 	  })
-	  this.state = {tvShows: dataSource};
+	  this.state = {tvShows: dataSource, visible:false};
 	}
 
 	
 	makeQuery = debounce(query => {
+		this.setState({
+			visible:!this.state.visible
+		})
 		searchFor(query)
 		  .then(shows => {
 		  	this.setState({
-		  		tvShows:this.state.tvShows.cloneWithRows(shows)
+		  		tvShows:this.state.tvShows.cloneWithRows(shows),
+		  		visible:!this.state.visible
 		  	})
 		  }).catch((error) => {
 		  		throw error
@@ -56,6 +61,7 @@ export default class Main extends Component{
 	render(){
 		return(
 			<View style={styles.container}>
+				<Spinner visible={this.state.visible} textContent={"Loading..."} textStyle={{color:'grey'}} />
 				<View style={styles.inputView}>
 					<TextInput style={styles.searchBox} 
 					onChangeText= { this.makeQuery}
