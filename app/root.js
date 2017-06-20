@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import {Navigator} from 'react-native'
 
 import Main from './main'
 import Episodes from './Episodes'
