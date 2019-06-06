@@ -27,3 +27,5 @@ Tv title is an app built with React Native that allows you to look at the names 
 - [ ] Add random list of movies on home screen
 - [ ] Load first season by default when a season is selected
 - [ ] Check whether searching on keypress is better than searching when button is clicked
+- [ ] Position text in the search bar
+- [ ] Change `Episode Title` text to something better
