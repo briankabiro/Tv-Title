@@ -3,7 +3,13 @@
 Tv title is an app built with React Native that allows you to look at the names of the episodes of your favorite tv shows. 
 
 ## Demo
-- coming soon
+![Home screen](assets/screenshots/home_screen.png?raw=true "Home Screen")
+
+![Search results](assets/screenshots/results.png?raw=true "Search results")
+
+![Episode list](assets/screenshots/episode_list_1.png?raw=true "Episode list")
+
+![Second Episode list](assets/screenshots/episode_list_2.png?raw=true "Second Episode list")
 
 
 
