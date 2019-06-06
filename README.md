@@ -5,6 +5,8 @@ Tv title is an app built with React Native that allows you to look at the names 
 ## Demo
 - coming soon
 
+
+
 ## Setting up the project
 
 1. Run `git clone https://github.com/briankabiro/Tv-Title.git`
@@ -19,3 +21,9 @@ Tv title is an app built with React Native that allows you to look at the names 
 5. Run `react-native start` to start the packager
 
 6. Once the packager is up and running: run `react-native run-ios`/ `react-native run-android` depending on the platform you have setup. :smile:
+
+
+## TODO
+- [ ] Add random list of movies on home screen
+- [ ] Load first season by default when a season is selected
+- [ ] Check whether searching on keypress is better than searching when button is clicked
